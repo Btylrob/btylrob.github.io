@@ -1,0 +1,36 @@
+name: Build and Deploy Soupault Site
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install OCaml and Opam
+        uses: ocaml/setup-ocaml@v2
+        with:
+          ocaml-compiler: 4.14.0
+
+      - name: Install Soupault
+        run: |
+          opam init -y --disable-sandboxing
+          opam install -y soupault
+
+      - name: Build the site
+        run: |
+          eval $(opam env)
+          soupault
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./output
+          publish_branch: main
+          force_orphan: true
