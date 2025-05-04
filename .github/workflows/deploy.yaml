@@ -24,11 +24,13 @@ jobs:
 
       - name: Initialize Opam and install Soupault
         run: |
+          # Disable system dependencies
           opam init --bare -a -y
           eval $(opam env)
-          opam install -y soupault
+          opam update
+          opam install -y soupault --no-deps  # Install Soupault without dependencies
 
-      - name: Build site
+      - name: Build the site
         run: |
           eval $(opam env)
           soupault
