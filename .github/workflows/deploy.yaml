@@ -12,19 +12,17 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Install OCaml and Opam
+      - name: Set up OCaml
         uses: ocaml/setup-ocaml@v2
         with:
           ocaml-compiler: 4.14.0
 
-      - name: Install Soupault
+      - name: Install dependencies
         run: |
-          opam init -y --disable-sandboxing
           opam install -y soupault
 
-      - name: Build the site
+      - name: Build site with Soupault
         run: |
-          eval $(opam env)
           soupault
 
       - name: Deploy to GitHub Pages
