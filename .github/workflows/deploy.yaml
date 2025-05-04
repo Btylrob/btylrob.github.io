@@ -8,23 +8,27 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    env:
+      OPAMYES: "true"
+      OPAMCONFIRMLEVEL: unsafe-yes
+      OPAMNOAUTO: "1"
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Set up OCaml and Opam
+      - name: Set up OCaml
         uses: ocaml/setup-ocaml@v2
         with:
           ocaml-compiler: 4.14.0
 
       - name: Initialize Opam and install Soupault
         run: |
-          opam init -y --bare
+          opam init --bare -a -y
           eval $(opam env)
-          opam update
           opam install -y soupault
 
-      - name: Build the site
+      - name: Build site
         run: |
           eval $(opam env)
           soupault
