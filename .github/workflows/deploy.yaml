@@ -17,18 +17,17 @@ jobs:
         with:
           ocaml-compiler: 4.14.0
 
-      - name: Install dependencies
+      - name: Install Soupault
         run: |
           opam install -y soupault
 
-      - name: Build site with Soupault
-        run: |
-          soupault
+      - name: Build site
+        run: soupault
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./output
+          publish_dir: ./build
           publish_branch: main
           force_orphan: true
