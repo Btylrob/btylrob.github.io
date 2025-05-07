@@ -3,8 +3,7 @@
 
 <time id="post-date">2025-05-04</time>
 
-This is an introductory paragraph. It’s long and only interesting for the really dedicated readers.
-Everyone else will just skip it.
+This year I started to dive deep in the notetaking neverending rabbit whole and have found out my most productive work setup.
 
 <p id="post-excerpt">
 This is my first post in the brand new soupault blog. It’s really interesting, except for its
