@@ -1,5 +1,12 @@
 # 📘 Getting Started with Learning FPGA's
 
+<time id="post-date">1970-01-01</time>
+
+<p id="post-excerpt">
+This is my first post in the brand new soupault blog. It’s really interesting, except for its
+introductory paragraph of course. That one is boring and should never be displayed on the front page.
+</p>
+
 ## 🧭 Introduction
 - What is an FPGA?
 - Why am I learning FPGAs in 2025?
