@@ -1,29 +1,35 @@
+name: Build and Deploy Site
+
+on:
+  push:
+    branches: [main]  # Change this to your default branch (like 'master' or 'main')
+
 jobs:
   build:
-    # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - uses: actions/checkout@v2
+    - name: Checkout repo
+      uses: actions/checkout@v2
 
-    - name: Install soupault
+    - name: Install Soupault
       env:
-        SOUPAULT_VERSION: 5.0.0$
+        SOUPAULT_VERSION: 5.0.0
       run: |
-        echo Downloading and unpacking soupault
-        wget https://github.com/PataphysicalSociety/soupault/releases/download/$SOUPAULT_VERSION/soupault-$SOUPAULT_VERSION-linux-x86_64.tar.gz
-        tar xvf soupault-$SOUPAULT_VERSION-linux-x86_64.tar.gz
-        sudo mv -v ./soupault-$SOUPAULT_VERSION-linux-x86_64/soupault /usr/bin/
+        wget https://github.com/PataphysicalSociety/soupault/releases/download/${SOUPAULT_VERSION}/soupault-${SOUPAULT_VERSION}-linux-x86_64.tar.gz
+        tar xvf soupault-${SOUPAULT_VERSION}-linux-x86_64.tar.gz
+        sudo mv -v ./soupault-${SOUPAULT_VERSION}-linux-x86_64/soupault /usr/bin/
+
+    - name: Run Lua/Python Preprocessing (optional)
+      run: |
+        lua preprocess.lua
+        python preprocess.py
 
     - name: Build the site
-      run: |
-        soupault
+      run: soupault
 
-    # Your deployment steps here
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v4
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./build  # Or wherever your built site ends up
+        publish_dir: ./build  # Adjust if your output folder is different
