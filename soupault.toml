@@ -90,3 +90,8 @@
   [widgets.quick-links]
   widget = "quick-links"
   wikipedia_default_language = "en"
+
+  [widgets.insert-favicon]
+  widget = "insert_html"
+  selector = "head"
+  html = """<link rel="icon" type="image/x-icon" href="600011.png">"""
