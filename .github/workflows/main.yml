@@ -2,17 +2,18 @@ name: Build and Deploy Site
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repo
+    - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Install Lua
+    - name: Install Lua 5.4
       run: |
         sudo apt update
         sudo apt install -y lua5.4
@@ -28,7 +29,7 @@ jobs:
         tar xvf soupault-${SOUPAULT_VERSION}-linux-x86_64.tar.gz
         sudo mv -v ./soupault-${SOUPAULT_VERSION}-linux-x86_64/soupault /usr/bin/
 
-    - name: Build the site
+    - name: Build the site with Soupault
       run: soupault
 
     - name: Deploy to GitHub Pages
@@ -36,4 +37,6 @@ jobs:
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./build
+ 
+
 
