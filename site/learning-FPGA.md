@@ -6,9 +6,11 @@
 FPGAs in 2025... What is a FPGA?, Why now?, Steps for Success.
 </p>
 
-[![Stale FPGA Meme](https://preview.redd.it/wsnh0uwni5e51.jpg?auto=webp&s=973f01a584761f5b41f2aaa35543d00f54fddc29)
 
 ## 🧭 Introduction
+
+![Stale FPGA Meme](https://preview.redd.it/wsnh0uwni5e51.jpg?auto=webp&s=973f01a584761f5b41f2aaa35543d00f54fddc29)
+
 - What is an FPGA?
   FPGA (Field Programmable Array) is a type of integrated ciruit that can be reprogrammed and reprogrammed by the user after manufactured.
   In short words unlike ASICs (Application Specific Integrated Circuits), can only be programmed once and are fixed in functionality. 
