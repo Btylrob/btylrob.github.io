@@ -1,9 +1,7 @@
 # My first post
 
-<time id="post-date">1970-01-01</time>
+<time id="post-date">2025-05-01</time>
 
-This is an introductory paragraph. It’s long and only interesting for the really dedicated readers.
-Everyone else will just skip it.
 
 <p id="post-excerpt">
 This is my first post in the brand new soupault blog. It’s really interesting, except for its
@@ -37,13 +35,9 @@ Thanks for stopping by. I don’t post often, but when I do, it’s usually beca
 
 If anything here resonates, feel free to say hello.
 
----
-[LinkedIn](https://www.linkedin.com/in/bran-robinson/)
-
 [Email](mailto:your.robib93@mail.broward.edu)
 
+[LinkedIn](https://www.linkedin.com/in/bran-robinson/)
 
 
 
-Well, I mean it would be interesting if there was any content in this post. Sadly, there isn’t,
-so it’s no better than its introductory paragraph.
