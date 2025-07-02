@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="600011.png">
+  <link rel="stylesheet" href="/sakura.css" type="text/css">
+ </head>
+ <body>
+  <main>
+   <h1>
+    My First Post
+   </h1>
+   <p>
+    <time id="post-date">2025-07-01</time>
+   </p>
+   <p id="post-excerpt">
+    In this post, I explain Linux KVM in simple terms and show how to download and use ISO of your choice in this case Ubuntu Satanic Edition.
+   </p>
+   <hr>
+   <h1>
+    What Is a Linux KVM?
+   </h1>
+   <p>
+    A <strong>KVM</strong>, or <strong>Kernel-based Virtual
+Machine</strong>, is a Linux kernel module that turns your operating
+system into a <strong>hypervisor</strong> — a platform that can run
+multiple <strong>virtual machines (VMs)</strong> on the same
+hardware.
+   </p>
+   <p>
+    KVM supports both Intel and AMD processors with hardware
+virtualization extensions (Intel VT-x or AMD-V). With KVM, your Linux
+system can manage and run isolated operating systems, sharing physical
+hardware resources.
+   </p>
+   <p>
+    If you’re unfamiliar, a <strong>hypervisor</strong> is software that
+allows multiple operating systems to run on a single machine while
+sharing the CPU, RAM, disk, and other resources.
+   </p>
+   <pre><code>        +----------------+     +----------------+     +----------------+
+        |   App A1       |     |   App B1       |     |   App C1       |
+        |   App A2       |     |   App B2       |     |   App C2       |
+        +----------------+     +----------------+     +----------------+
+        |    OS A        |     |    OS B        |     |    OS C        |
+        +----------------+     +----------------+     +----------------+
+                  \               |               /
+                   \              |              /
+                    \             |             /
+                     \            |            /
+                    +----------------------------------+
+                    |           Hypervisor             |
+                    |  (Virtual Machine Monitor, VMM)  |
+                    +----------------------------------+
+                    |      Shared Physical Hardware     |
+                    |  - CPU                            |
+                    |  - RAM                            |
+                    |  - Disk / Storage                 |
+                    |  - Network Interfaces             |
+                    |  - GPU / I/O Devices              |
+                    +----------------------------------+</code></pre>
+   <p>
+    The hypervisor is essential, without it, you wouldn’t be able to run
+VMs on your machine. The amazing thing is that with KVM, your Linux
+kernel becomes the hypervisor itself, no need for external software like
+VMware or VirtualBox (although those are fine options too).
+   </p>
+   <p>
+    As long as you’re using a Linux distro and have a compatible Intel or
+AMD CPU, you’re good to go!
+   </p>
+   <hr>
+   <h2>
+    🔧 Key KVM Components
+   </h2>
+   <p>
+    | Tool | Description | |——|———––| | <code>qemu-system-x86</code> |
+The QEMU emulator used to run x86_64 VMs with KVM acceleration. | |
+<code>libvirt-daemon-system</code> | The background service that manages
+VMs. | | <code>virtinst</code> | CLI tool to create and define new VMs.
+| | <code>virt-manager</code> | A graphical application to manage VMs
+easily. |
+   </p>
+   <p>
+    To install them:
+   </p>
+   <div class="sourceCode" id="cb2">
+    <pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install qemu-system-x86 libvirt-daemon-system virtinst <span class="dt">\</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>virt-manager virt-viewer ovmf swtpm qemu-utils guestfs-tools <span class="dt">\</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>libosinfo-bin tuned</span></code></pre>
+   </div>
+   <h2>
+    Instructions
+   </h2>
+   <ul>
+    <li>
+     First, we are going to check if whether you have compatible
+virtualization hardware. If compatible, output should be VT-x for Intel
+and AMD.
+    </li>
+   </ul>
+   <p>
+    <code>lscpu | grep Virtualization</code>
+   </p>
+   <ul>
+    <li>
+     Next Step we are going to check if our settings are compatible for
+virtualizations.
+    </li>
+   </ul>
+   <p>
+    <code>zgrep CONFIG_KVM /boot/config-$(uname -r)</code>
+   </p>
+   <p>
+    Output should be this.
+   </p>
+   <pre><code>CONFIG_KVM_GUEST=y
+CONFIG_KVM_MMIO=y
+CONFIG_KVM_ASYNC_PF=y
+CONFIG_KVM_VFIO=y
+CONFIG_KVM_GENERIC_DIRTYLOG_READ_PROTECT=y
+CONFIG_KVM_COMPAT=y
+CONFIG_KVM_XFER_TO_GUEST_WORK=y
+CONFIG_KVM=m
+CONFIG_KVM_WERROR=y
+CONFIG_KVM_INTEL=m
+CONFIG_KVM_AMD=m
+CONFIG_KVM_AMD_SEV=y</code></pre>
+   <ul>
+    <li>
+     Next command we will run will give our used permission to run
+accelerated VMs.
+    </li>
+   </ul>
+   <p>
+    <code>sudo usermod -aG kvm YOURUSER</code>
+   </p>
+   <ul>
+    <li>
+     Now we will start and enable libvirtd which will help mange
+VMs.
+    </li>
+   </ul>
+   <p>
+    <code>sudo systemctl start libvirtd &amp;&amp; sudo systemctl enable libvirtd</code>
+   </p>
+   <ul>
+    <li>
+     <p>
+      After this Virtual Machine Manager should show in your apps, open
+that up and get an ISO image you would like to use. In this case I’m
+using Ubuntu Satanic edition profound yes but if you are curious like
+me, you can download it <a href="https://archiveos.org/ubuntu-satanic/">here</a>!
+     </p>
+    </li>
+    <li>
+     <p>
+      Once the download is done, open VM manager and click create new
+virtual machine in the computer icon.
+     </p>
+    </li>
+    <li>
+     <p>
+      Choose the downloaded ISO out of your downloads folder and click
+forward. If you can’t find your OS in the list at first, you can just
+un-click automatically detect from source and search for Generic or
+unknown OS…
+     </p>
+    </li>
+   </ul>
+   <p>
+    *Now depending on which CPU you have and ram you can adjust the
+setting for your VM. I typically do not like to put anything higher than
+2 CPUs and 1024 gibs on the memory, as my computer does not have strong
+specs. If you have an average computer, just stick to the specs provided
+when you get to the create disk image part. Once filled out, complete
+done, and now you are ready to access your VM.
+   </p>
+   <p>
+    <img src="images/vm-setup.png" alt="Satanic Ubunutu">
+   </p>
+  </main>
+ </body>
+</html>
