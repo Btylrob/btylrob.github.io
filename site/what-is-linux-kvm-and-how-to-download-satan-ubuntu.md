@@ -112,7 +112,7 @@ CONFIG_KVM_AMD_SEV=y
 
 *Now depending on which CPU you have and ram you can adjust the setting for your VM. I typically do not like to put anything higher than 2 CPUs and 1024 gibs on the memory, as my computer does not have strong specs. If you have an average computer, just stick to the specs provided when you get to the create disk image part. Once filled out, complete done, and now you are ready to access your VM. 
 
-![Satanic Ubunutu](btylrob.github.io/images/Screenshot from 2025-07-02 18-42-08.png)
+![Satanic Ubuntu](https://btylrob.github.io/images/Screenshot%20from%202025-07-02%2018-42-08.png)
 
 
 
