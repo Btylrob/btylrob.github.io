@@ -74,14 +74,23 @@ AMD CPU, you’re good to go!
    <h2>
     🔧 Key KVM Components
    </h2>
-   <p>
-    | Tool | Description | |——|———––| | <code>qemu-system-x86</code> |
-The QEMU emulator used to run x86_64 VMs with KVM acceleration. | |
-<code>libvirt-daemon-system</code> | The background service that manages
-VMs. | | <code>virtinst</code> | CLI tool to create and define new VMs.
-| | <code>virt-manager</code> | A graphical application to manage VMs
+   <ul>
+    <li>
+     <code>qemu-system-x86</code> The QEMU emulator used to run x86_64
+VMs with KVM acceleration. |
+    </li>
+    <li>
+     <code>libvirt-daemon-system</code> The background service that
+manages VMs. |
+    </li>
+    <li>
+     <code>virtinst</code> CLI tool to create and define new VMs. |
+    </li>
+    <li>
+     <code>virt-manager</code> A graphical application to manage VMs
 easily. |
-   </p>
+    </li>
+   </ul>
    <p>
     To install them:
    </p>
@@ -157,26 +166,66 @@ me, you can download it <a href="https://archiveos.org/ubuntu-satanic/">here</a>
     <li>
      <p>
       Once the download is done, open VM manager and click create new
-virtual machine in the computer icon.
-     </p>
-    </li>
-    <li>
-     <p>
-      Choose the downloaded ISO out of your downloads folder and click
-forward. If you can’t find your OS in the list at first, you can just
-un-click automatically detect from source and search for Generic or
-unknown OS…
+virtual machine whcih is the computer icon with the play
+button.
      </p>
     </li>
    </ul>
    <p>
-    *Now depending on which CPU you have and ram you can adjust the
-setting for your VM. I typically do not like to put anything higher than
-2 CPUs and 1024 gibs on the memory, as my computer does not have strong
-specs. If you have an average computer, just stick to the specs provided
-when you get to the create disk image part. Once filled out, complete
-done, and now you are ready to access your VM.
+    <img src="https://github.com/Btylrob/btylrob.github.io/blob/main/site/instruction3.png?raw=true" alt="Step1">
    </p>
+   <ul>
+    <li>
+     Then you will want to choose the first option <em>Local install
+media (ISO Image or CDROM)</em> because in this ecample we will be using
+a download ISO.
+    </li>
+   </ul>
+   <p>
+    <img src="https://github.com/Btylrob/btylrob.github.io/blob/main/site/instruction4.png?raw=true" alt="Step3">
+   </p>
+   <ul>
+    <li>
+     After that choose the ISO from your downloads folder. If you click
+your whole downloads folder it will default to that everytime you make a
+VM, making it easier for less file transfering. If you are using a
+lesser know OS un-click the<em>Automatically detect from installation
+media / source</em> and type in <em>Generic or Unknown OS</em>.
+    </li>
+   </ul>
+   <p>
+    <img src="https://github.com/Btylrob/btylrob.github.io/blob/main/site/instruction5.png?raw=true" alt="Step2">
+   </p>
+   <ul>
+    <li>
+     Now depending on which CPU you have and ram you can adjust the
+setting for your VM. I typically do not like to put anything higher than
+2 CPUs and 1024 MiB on the memory, as my computer does not have strong
+specs. If you have an average computer, just stick to the specs provided
+when you get to the create disk image part.
+    </li>
+   </ul>
+   <p>
+    <img src="https://github.com/Btylrob/btylrob.github.io/blob/main/site/instruction2.png?raw=true" alt="Step3">
+   </p>
+   <ul>
+    <li>
+     Once the CPU and Memory settings are complete click forward and
+check your settings to make sure your preferences are correct. Make sure
+to rename your VM to something you will remember, then click
+finish.
+    </li>
+   </ul>
+   <p>
+    <img src="https://github.com/Btylrob/btylrob.github.io/blob/main/site/instruction1.png?raw=true" alt="Step4">
+   </p>
+   <ul>
+    <li>
+     Congrats your VM should have started running and put you into the
+boot menu. Once ran you can access everything through the gui just like
+if you where using VMWare or Virtual Box.
+    </li>
+   </ul>
    <p>
     <img src="https://github.com/Btylrob/btylrob.github.io/blob/main/site/ubuntu.png?raw=true" alt="Ubuntu">
    </p>
