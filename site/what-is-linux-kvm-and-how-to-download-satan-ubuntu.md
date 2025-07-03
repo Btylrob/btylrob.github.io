@@ -51,12 +51,10 @@ As long as you're using a Linux distro and have a compatible Intel or AMD CPU, y
 
 ## 🔧 Key KVM Components
 
-| Tool | Description |
-|------|-------------|
-| `qemu-system-x86` | The QEMU emulator used to run x86_64 VMs with KVM acceleration. |
-| `libvirt-daemon-system` | The background service that manages VMs. |
-| `virtinst` | CLI tool to create and define new VMs. |
-| `virt-manager` | A graphical application to manage VMs easily. |
+* `qemu-system-x86`  The QEMU emulator used to run x86_64 VMs with KVM acceleration. |
+* `libvirt-daemon-system` The background service that manages VMs. |
+* `virtinst`  CLI tool to create and define new VMs. |
+* `virt-manager`  A graphical application to manage VMs easily. |
 
 To install them:
 
@@ -106,10 +104,26 @@ CONFIG_KVM_AMD_SEV=y
 
 * After this Virtual Machine Manager should show in your apps, open that up and get an ISO image you would like to use. In this case I'm using Ubuntu Satanic edition profound yes but if you are curious like me, you can download it [here](https://archiveos.org/ubuntu-satanic/)!
 
-* Once the download is done, open VM manager and click create new virtual machine in the computer icon.
+* Once the download is done, open VM manager and click create new virtual machine whcih is the computer icon with the play button.
 
-* Choose the downloaded ISO out of your downloads folder and click forward. If you can't find your OS in the list at first, you can just  un-click automatically detect from source and search for Generic or unknown OS... 
+![Step1](https://github.com/Btylrob/btylrob.github.io/blob/main/site/instruction3.png?raw=true)
 
-*Now depending on which CPU you have and ram you can adjust the setting for your VM. I typically do not like to put anything higher than 2 CPUs and 1024 gibs on the memory, as my computer does not have strong specs. If you have an average computer, just stick to the specs provided when you get to the create disk image part. Once filled out, complete done, and now you are ready to access your VM. 
+* Then you will want to choose the first option *Local install media (ISO Image or CDROM)* because in this ecample we will be using a download ISO.
+
+![Step3](https://github.com/Btylrob/btylrob.github.io/blob/main/site/instruction4.png?raw=true)
+
+* After that choose the ISO from your downloads folder. If you click your whole downloads folder it will default to that everytime you make a VM, making it easier for less file transfering. If you are using a lesser know OS un-click the*Automatically detect from installation media / source* and type in *Generic or Unknown OS*.
+
+![Step2](https://github.com/Btylrob/btylrob.github.io/blob/main/site/instruction5.png?raw=true)
+
+* Now depending on which CPU you have and ram you can adjust the setting for your VM. I typically do not like to put anything higher than 2 CPUs and 1024 MiB on the memory, as my computer does not have strong specs. If you have an average computer, just stick to the specs provided when you get to the create disk image part.
+
+![Step3](https://github.com/Btylrob/btylrob.github.io/blob/main/site/instruction2.png?raw=true)
+
+* Once the CPU and Memory settings are complete click forward and check your settings to make sure your preferences are correct. Make sure to rename your VM to something you will remember, then click finish.
+
+![Step4](https://github.com/Btylrob/btylrob.github.io/blob/main/site/instruction1.png?raw=true)
+
+* Congrats your VM should have started running and put you into the boot menu. Once ran you can access everything through the gui just like if you where using VMWare or Virtual Box.
 
 ![Ubuntu](https://github.com/Btylrob/btylrob.github.io/blob/main/site/ubuntu.png?raw=true)
